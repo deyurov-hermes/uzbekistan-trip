@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Узбекистан · Ташкент — Самарканд · 24.10–01.11</title>
+<style>
+:root{
+  --ink:#2a2318; --muted:#7a6f5c; --paper:#faf6ee; --card:#fffdf8;
+  --tile:#0e7c86; --tile-deep:#0a5c64; --sand:#e8dcc4; --sand-deep:#d4c3a1;
+  --gold:#b8860b; --line:#e3d9c6; --mount:#4a6fa5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:16px/1.65 Georgia,'Times New Roman',serif}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em}
+p{max-width:70ch}
+img{display:block;width:100%;height:100%;object-fit:cover;background:var(--sand)}
+a{color:var(--tile-deep)}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+/* header */
+header{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+header .bg{position:absolute;inset:0;z-index:0}
+header .bg img{filter:brightness(.72) saturate(1.05)}
+header .inner{position:relative;z-index:1;padding:64px 0 44px}
+.kicker{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#ffe9b8;margin-bottom:14px}
+header h1{font-size:clamp(34px,6vw,64px);line-height:1.08;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+header .sub{margin-top:14px;font-size:18px;color:#f3ead8;font-style:italic;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+header .facts{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+header .facts span{border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:6px 16px;font-size:14px;backdrop-filter:blur(2px);background:rgba(0,0,0,.22)}
+
+/* sections */
+section{padding:56px 0}
+.sec-kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+h2.sec{font-size:clamp(26px,3.6vw,38px);margin-bottom:8px}
+.lead{color:var(--muted);font-size:18px;font-style:italic;margin-bottom:28px}
+
+/* intro grid */
+.intro-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+@media(max-width:820px){.intro-grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+.panel h3{font-size:18px;margin-bottom:10px;color:var(--tile-deep)}
+.panel ul{list-style:none}
+.panel li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
+.panel li:last-child{border-bottom:0}
+.panel li::before{content:"◆";position:absolute;left:2px;color:var(--gold);font-size:11px;top:11px}
+
+/* timeline days */
+.day{display:grid;grid-template-columns:210px 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px}
+@media(max-width:760px){.day{grid-template-columns:1fr}}
+.day .photo{position:relative;min-height:220px}
+.day .photo .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:12.5px;padding:26px 14px 10px;font-style:italic}
+.day .body{padding:22px 26px}
+.day .num{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.day h3{font-size:22px;margin:4px 0 10px}
+.day ol{padding-left:20px}
+.day ol li{margin:7px 0;font-size:15.5px}
+.day .note{margin-top:12px;font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.day .note b{color:var(--tile-deep)}
+
+/* variant switch */
+.variants{margin:34px 0 8px;display:flex;gap:10px;flex-wrap:wrap}
+.variants button{font:inherit;font-size:15px;padding:10px 22px;border-radius:999px;border:1.5px solid var(--sand-deep);background:var(--card);color:var(--ink);cursor:pointer;transition:.2s}
+.variants button.on-a{background:var(--tile);border-color:var(--tile);color:#fff}
+.variants button.on-b{background:var(--mount);border-color:var(--mount);color:#fff}
+.branch{display:none}
+.branch.show{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.branch.show{animation:none}}
+.verdict{margin:26px 0 6px;padding:20px 26px;border-radius:14px;background:linear-gradient(135deg,#fdf8ec,#f6ecd6);border:1px solid var(--sand-deep)}
+.verdict h3{font-size:19px;margin-bottom:6px;color:#8a6207}
+.verdict p{font-size:15.5px}
+
+/* gallery strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+@media(max-width:820px){.strip{grid-template-columns:repeat(2,1fr)}}
+.strip figure{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/3;border:1px solid var(--line)}
+.strip figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:12.5px;padding:24px 12px 9px}
+
+/* practical */
+.prac{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.prac{grid-template-columns:1fr}}
+.prac .panel h3 span{font-size:12px;color:var(--muted);font-weight:400;display:block;letter-spacing:.08em}
+.check li::before{content:"☐";font-size:15px;color:var(--tile);top:8px}
+.check li.done::before{content:"✓";color:var(--gold);font-weight:bold}
+
+footer{padding:36px 0 48px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);margin-top:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bg"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/RegistanSquare_Samarkand.jpg/1280px-RegistanSquare_Samarkand.jpg" alt="Регистан, Самарканд"></div>
+  <div class="wrap inner">
+    <div class="kicker">Дмитрий и жена · 24 октября — 1 ноября</div>
+    <h1>Узбекистан:<br>Ташкент, Самарканд и развилка</h1>
+    <div class="sub">Девять дней, один скоростной поезд и два плана на середину поездки — выберете на месте.</div>
+    <div class="facts">
+      <span>☀️ +18…+24 днём</span><span>🌙 +5…+10 ночью</span><span>🛂 без визы, до 15 дней без регистрации</span><span>🚄 Ташкент—Самарканд 2 ч 10 мин</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-kicker">Отправная точка</div>
+    <h2 class="sec">Как устроен этот план</h2>
+    <p class="lead">Октябрь — лучший месяц для Узбекистана: жара спала, дождей почти нет, горы уже в первом снегу.</p>
+    <div class="intro-grid">
+      <div class="panel">
+        <h3>Каркас поездки</h3>
+        <ul>
+          <li><b>Дни 1–3 (пт–вс):</b> Ташкент — старый город, базары, метро-музей</li>
+          <li><b>Дни 4–5 (пн–вт):</b> Самарканд на «Афросиабе», с ночёвкой у Регистана</li>
+          <li><b>Дни 6–7 (ср–чт):</b> развилка — Бухара или Чарвак и Чимган</li>
+          <li><b>День 8 (пт):</b> запасной день: шопинг, недосмотренное, спешки нет</li>
+          <li><b>День 9 (сб):</b> Алайский базар утром — и на вылет</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Купить заранее — на этой неделе</h3>
+        <ul class="check">
+          <li>Билеты «Афросиаб» туда-обратно (chao.uz или Яндекс Расписания)</li>
+          <li>Отель в Самарканде в шаге от Регистана, 1–2 ночи</li>
+          <li>Авиабилеты, если ещё не куплены</li>
+          <li>Страховка (на границе спросят)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-kicker">Дни 1–5 · общая часть</div>
+    <h2 class="sec">Ташкент и Самарканд</h2>
+    <p class="lead">«В Ташкенте скучновато» — полуправда: мегаследов вроде Регистана там нет, но два полных дня встают идеально.</p>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Tashkentatnight.jpg/1280px-Tashkentatnight.jpg" alt="Ташкент вечером"><div class="cap">Ташкент вечером</div></div>
+      <div class="body">
+        <div class="num">День 1 · пятница, 24 октября</div>
+        <h3>Прилёт, старый город на закате</h3>
+        <ol>
+          <li>Аэропорт → симка Ucell/Beeline (~$5 с интернетом) → такси в отель (Яндекс Go работает)</li>
+          <li>Вечером — прогуляться до базара Чорсу, пока живой и не жарко</li>
+          <li>Ужин: плов в Besh Qozon (Центр плова) — учреждение, а не ресторан</li>
+        </ol>
+        <div class="note"><b>Деньги:</b> рубли наличными, меняйте в городе (курс ~155–160 сум/₽). «Мир» работает нестабильно, не рассчитывайте.</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Chorsu_Bazaar%2C_Tashkent%2C_Uzbekistan_-_2019-06-01_7.jpg/1280px-Chorsu_Bazaar%2C_Tashkent%2C_Uzbekistan_-_2019-06-01_7.jpg" alt="Базар Чорсу"><div class="cap">Чорсу — главный рынок города под куполом 1980-х</div></div>
+      <div class="body">
+        <div class="num">День 2 · суббота</div>
+        <h3>Старый Ташкент пешком</h3>
+        <ol>
+          <li>Махалля Гулбозар: узкие улочки, резные двери, мастерские</li>
+          <li>Медресе Кукельдаш (XVI в.) — над обрывом старого базара</li>
+          <li>Чорсу: специи, сухофрукты, гранаты, лепёшки. Здесь же обед</li>
+          <li>Комплекс Хаст-Имам: Коран Османа — старейший в мире (VII в.)</li>
+          <li>Мастерская керамистов Рахимовых — смотреть, как пишут бирюзу</li>
+        </ol>
+        <div class="note"><b>Вечером:</b> метро — станции «Космонавтлар», «Алишер Навои», «Пахтакор». Подземный музей советских мозаик, час катания на двоих стоит меньше доллара.</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Tashkent_city_8.jpg/1280px-Tashkent_city_8.jpg" alt="Ташкент-Сити"><div class="cap">Ташкент-Сити — новый деловой центр</div></div>
+      <div class="body">
+        <div class="num">День 3 · воскресенье</div>
+        <h3>Новый Ташкент</h3>
+        <ol>
+          <li>Сквер Амира Темура и площадь Мустакиллик — парадный центр</li>
+          <li>Музей прикладного искусства — лучший в стране по керамике и сузане</li>
+          <li>Телебашня или Ташкент-Сити: фонтаны, стеклянные башни, контраст с махаллями</li>
+          <li>Ужин в старом городе, ранний отбой — утром поезд</li>
+        </ol>
+        <div class="note"><b>Лайфхак:</b> если день свободен раньше — Алайский базар к вечеру спокойнее Чорсу и красивее выкладкой.</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Samarkanda_IGP2772.jpg/1280px-Samarkanda_IGP2772.jpg" alt="Гур-Эмир"><div class="cap">Гур-Эмир — мавзолей Тамерлана</div></div>
+      <div class="body">
+        <div class="num">День 4 · понедельник</div>
+        <h3>Утренний «Афросиаб» → Самарканд</h3>
+        <ol>
+          <li>Поезд ~07:00, в Самарканде к 09:10. Багаж — в отель у Регистана</li>
+          <li>Регистан: три медресе XV–XVII вв. Зайти внутрь каждого — внутри интереснее фасадов</li>
+          <li>Гур-Эмир: бирюзовый купол, саркофаг Тамерлана</li>
+          <li>Закат на смотровой площадке кафе возле Регистана — купола горят</li>
+        </ol>
+        <div class="note"><b>Билеты:</b> эконом ~95–120 тыс. сум (~700–900 ₽). На воскресенье и понедельник разбирают заранее — сейчас и купить.</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Shah-i-Zinda_%288145369659%29.jpg/1280px-Shah-i-Zinda_%288145369659%29.jpg" alt="Шахи-Зинда"><div class="cap">Шахи-Зинда — ансамбль мавзолеев, главное впечатление Самарканда</div></div>
+      <div class="body">
+        <div class="num">День 5 · вторник</div>
+        <h3>Самарканд: утро и развилка</h3>
+        <ol>
+          <li>Шахи-Зинда к открытию (8:00) — до экскурсионных групп это другой город</li>
+          <li>Обсерватория Улугбека: секстант XV века, врытый в землю</li>
+          <li>Базар Сиаб: обед, самаркандские лепёшки с кунжутом, сладости</li>
+          <li>Днём — по выбранной ветке: либо вечерний поезд в Бухару, либо возврат в Ташкент</li>
+        </ol>
+        <div class="note"><b>Шахи-Зинда</b> — то, ради чего вообще едут в Самарканд. Не сокрушайтесь, если Регистан покажется туристическим — просто дойдите до верха лестницы Шахи-Зинды.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-kicker">Дни 6–7 · развилка</div>
+    <h2 class="sec">Бухара или горы?</h2>
+    <p class="lead">Оба варианта рабочие, вложатся в те же два дня. Переключите и посмотрите — потом вернётесь к развилке.</p>
+
+    <div class="variants">
+      <button id="btn-a" class="on-a" onclick="setBranch('a')">🕌 Вариант А: Бухара</button>
+      <button id="btn-b" onclick="setBranch('b')">🏔 Вариант Б: Чарвак и Чимган</button>
+    </div>
+
+    <div class="verdict">
+      <h3>Как выбрать за 10 секунд</h3>
+      <p><b>Бухара</b> — если хочется ещё одного «великого города»: купола, узкие улочки, живой старый город без машин. <b>Горы</b> — если после базаров и мечетей хочется воздуха, тишины и совсем других фотографий. При 9 днях можно и скомбинировать: дни 6–7 Бухара, день 8 — Чарвак. Обратное комбинирование хуже: из Бухары в горы далеко.</p>
+    </div>
+
+    <div id="branch-a" class="branch show">
+      <div class="day">
+        <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Poi_Kalon.jpg/1280px-Poi_Kalon.jpg" alt="Пои-Калян"><div class="cap">Ансамбль Пои-Калян: минарет 1127 года</div></div>
+        <div class="body">
+          <div class="num">День 6 · среда</div>
+          <h3>Самарканд → Бухара</h3>
+          <ol>
+            <li>Утренний «Афросиаб» или «Шарк»: ~1,5–2 часа, эконом от ~60 тыс. сум</li>
+            <li>Отель в старом городе. Дальше всё пешком — Бухара компактнее Самарканда</li>
+            <li>Пои-Калян: минарет Кальян, мечеть и медресе Мир-Араб</li>
+            <li>Торговые купола: сувениры здесь лучше и дешевле ташкентских</li>
+            <li>Вечером — Ляби-Хауз: пруд, чайхана под тутовником, ужин с видом</li>
+          </ol>
+          <div class="note"><b>Важно про регистрацию:</b> в Бухаре пробудете меньше трёх суток до возврата в Ташкент — перерегистрация не нужна. Отель в Ташкенте сам закроет всё при выезде.</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Ark_of_Bukhara_%28%D0%A6%D0%B8%D1%82%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C_%D0%90%D1%80%D0%BA._Buxoro_arki%29.jpg/1280px-Ark_of_Bukhara_%28%D0%A6%D0%B8%D1%82%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C_%D0%90%D1%80%D0%BA._Buxoro_arki%29.jpg" alt="Арк"><div class="cap">Арк — цитадель правителей Бухары</div></div>
+        <div class="body">
+          <div class="num">День 7 · четверг</div>
+          <h3>Бухара: Арк, мавзолей Саманидов и возврат</h3>
+          <ol>
+            <li>Арк: цитадель эмиров, музей истории внутри стен</li>
+            <li>Мавзолей Саманидов (IX–X вв.) — самая ранняя постройка города, до обеда пока мягкий свет</li>
+            <li>Чор-Минор — маленькая мечеть с четырьмя минаретами, открытка Бухары</li>
+            <li>Вечерний поезд в Ташкент (~4 ч) или ночёвка и утренний</li>
+          </ol>
+          <div class="note"><b>Ритм:</b> Бухара — город не спешки. Если Самарканд понравился «вау», Бухара понравится «уютно». Другая эмоция, не дубликат.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="branch-b" class="branch">
+      <div class="day">
+        <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Charvak_Reservoir_%282%29.jpg/1280px-Charvak_Reservoir_%282%29.jpg" alt="Чарвак"><div class="cap">Чарвакское водохранилище, ~1000 м над уровнем моря</div></div>
+        <div class="body">
+          <div class="num">День 6 · среда</div>
+          <h3>Самарканд → Ташкент → Чарвак</h3>
+          <ol>
+            <li>Утренний «Афросиаб» в Ташкент, к обеду на месте</li>
+            <li>Такси или трансфер на Чарвак (~1,5–2 ч от центра). Жильё — гостевые дома в Чимгане или на берегу</li>
+            <li>Вечером — ужин с видом на бирюзовую воду и хребты</li>
+          </ol>
+          <div class="note"><b>Одежда:</b> в горах на 10–12° холоднее города. Ночью около нуля, тёплая куртка обязательна.</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Chimgan_Mountains.jpg/1280px-Chimgan_Mountains.jpg" alt="Чимган"><div class="cap">Больший Чимган, 3309 м — Тянь-Шань у Ташкента</div></div>
+        <div class="body">
+          <div class="num">День 7 · четверг</div>
+          <h3>Чимган: канатка и перевал</h3>
+          <ol>
+            <li>Канатная дорога на Чимган: наверху октябрьский снег и вид на всю долину</li>
+            <li>Перевал Чимган — остановка для фото, чай в юрте-чайхане</li>
+            <li>По желанию — вертолётная площадка и водопад Гулькамское ущелье (пешая прогулка на пару часов)</li>
+            <li>К вечеру — возврат в Ташкент</li>
+          </ol>
+          <div class="note"><b>Деньги:</b> канатка ~$10–15 с человека. В посёлках с картами туго — наличные сумы с собой.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Dry_Fruits_in_Siyob_Bazaar..JPG/1280px-Dry_Fruits_in_Siyob_Bazaar..JPG" alt="Сухофрукты"><div class="cap">Сухофрукты и специи — главный груз обратного рейса</div></div>
+      <div class="body">
+        <div class="num">Дни 8–9 · пятница–суббота</div>
+        <h3>Запасной день и вылет</h3>
+        <ol>
+          <li>День 8 — недосмотренное: музей истории, экопарк Бабура, чайхана на Алае, спонтанные желания</li>
+          <li>День 9 — утро на Алайском базаре: гранаты, урюк, специи, лепёшки в чемодан</li>
+          <li>Вылет. Миграционную карту из прилёта сохраните до конца</li>
+        </ol>
+        <div class="note">Если выбрали Бухару — день 8 можно отдать Чарваку как однодневную вылазку. Получится «всё сразу», но без спешки это лучше планировать заранее (такси туда-обратно договаривайте фиксированной ценой).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-kicker">Практика</div>
+    <h2 class="sec">Без сюрпризов</h2>
+    <div class="prac">
+      <div class="panel">
+        <h3>Формальности <span>5 минут чтения</span></h3>
+        <ul>
+          <li>Загранпаспорта, без визы, срок пребывания не ограничен</li>
+          <li>Регистрация нужна после 15 дней — поездка короче, отели всё закрывают сами</li>
+          <li>Миграционная карта на прилёте: заполнить, сохранить до вылета</li>
+          <li>Медстраховку спросят на границе</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Деньги и транспорт <span>на месте</span></h3>
+        <ul>
+          <li>Наличные рубли → сумы в обменниках города</li>
+          <li>Яндекс Go в Ташкенте и Самарканде, поездки дешёвые</li>
+          <li>Метро Ташкента: карта ATTO (~1700 сум) или жетон в кассе</li>
+          <li>Симка в аэропорту: Ucell / Beeline, ~$5 с пакетом интернета</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Что надеть <span>конец октября</span></h3>
+        <ul>
+          <li>Днём +18…+24: футболка, лонгслив</li>
+          <li>Вечером +5…+10: флиска и куртка — обязательно</li>
+          <li>Горы (Чарвак/Чимган): тёплая куртка, шапка, ночью около нуля</li>
+          <li>Мечети: закрытые плечи и колени, женщине — платок</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strip">
+      <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Hazrat_Imam_01.jpg/1280px-Hazrat_Imam_01.jpg" alt="Хаст-Имам"><figcaption>Хаст-Имам, Ташкент</figcaption></figure>
+      <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Kosmonavtlar_Station_of_Tashkent_Metro_6.jpg/1280px-Kosmonavtlar_Station_of_Tashkent_Metro_6.jpg" alt="Метро Космонавтлар"><figcaption>Метро «Космонавтлар»</figcaption></figure>
+      <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/45_Lab-i_Hauz_complex_1810.jpg/1280px-45_Lab-i_Hauz_complex_1810.jpg" alt="Ляби-Хауз"><figcaption>Ляби-Хауз, Бухара</figcaption></figure>
+      <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Charvak_Reservoir_%282%29.jpg/1280px-Charvak_Reservoir_%282%29.jpg" alt="Чарвак и горы"><figcaption>Чарвак: вода и хребты</figcaption></figure>
+           </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    План собран 19.10.2026. Источники: прогноз погоды goodmeteo/nuipogoda (октябрь, Ташкент), расписание и цены «Афросиаба» — chao.uz/ioka.uz/tutu, правила въезда — t-j.ru и МИД. Цены ориентировочные, перед покупкой сверяйте на месте. Фото: Wikimedia Commons.
+  </div>
+</footer>
+
+<script>
+function setBranch(b){
+  var a=document.getElementById('branch-a'), bb=document.getElementById('branch-b');
+  var ba=document.getElementById('btn-a'), bb2=document.getElementById('btn-b');
+  a.classList.toggle('show', b==='a');
+  bb.classList.toggle('show', b==='b');
+  ba.className = b==='a' ? 'on-a' : '';
+  bb2.className = b==='b' ? 'on-b' : '';
+}
+</script>
+</body>
+</html>
